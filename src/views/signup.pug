@@ -1,0 +1,31 @@
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Sign Up
+    link(rel="stylesheet" href="css/signup.css")
+
+  body
+    .container
+      .card
+        h2 Sign Up
+        form(action="/signup", method="post")
+          .form-group
+            label(for="name") Name
+            input(type="text", id="name", name="name", required)
+          .form-group
+            label(for="email") Email
+            input(type="email", id="email", name="email", required)
+          .form-group
+            label(for="age") Age
+            input(type="number", id="age", name="age", required)
+          .form-group
+            label(for="department") Department
+            select(id="department", name="department", required)
+              option(value="dept1") Department 1
+              option(value="dept2") Department 2
+              option(value="dept3") Department 3
+          .form-group
+            label(for="password") Password
+            input(type="password", id="password", name="password", required)
+          button(type="submit") Sign Up

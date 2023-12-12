@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  link(rel="stylesheet" href="css/dashboard.css")
+  title User Dashboard
+
+body
+  .dashboard-container
+    h2 Welcome to Your Dashboard, #{user.name}!
+
+    // User Information
+    .user-info
+      h3 Your Information
+      p#name Name: #{user.name}
+      button#edit-name Edit Name
+      p#email Email: #{user.email}
+      button#edit-email Edit Email
+      p#age Age: #{user.age}
+      button#edit-age Edit Age
+      // Add other fields as needed
+      
+      
+    // Complaints
+    .complaints
+      h3 Your Complaints
+      if user && user.complaints && user.complaints.length > 0
+        each complaint in user.complaints
+          .complaint-card
+            p Title: #{complaint.title}
+            p Description: #{complaint.description}
+            // Add other complaint details
+      else
+        p You have no complaints. #{user.complaints}
+
+    // Add any other sections or features as needed
+
+  

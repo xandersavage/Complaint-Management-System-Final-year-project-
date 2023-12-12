@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Complaint Management System
+    link(rel="stylesheet" href="css/style.css")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet")
+  body
+    header
+      h1 Complaint Management System
+    main
+      .hero
+        h2 Welcome to the Complaint Management System
+        p A platform to submit and track complaints
+        a.button(href="/login") Login
+        a.button(href="/signup") Signup
+        a.button(href="").logout Logout
+        a.button(href="/me").dashboard Dashboard
+      .features
+        .feature
+          h3 Easy Submission
+          p Quickly submit your complaints through a user-friendly interface.
+        .feature
+          h3 Real-time Updates
+          p Stay informed with real-time updates on the status of your complaints.
+        .feature
+          h3 Efficient Resolution
+          p Experience efficient resolution processes for a better user experience.
+        footer
+            p © 2023 Complaint Management System. All rights reserved.
+
+
+script(src='/js/bundle.js')

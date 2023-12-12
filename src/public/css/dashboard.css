@@ -1,0 +1,53 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.dashboard-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+}
+
+.user-info, .complaints {
+  margin-top: 20px;
+}
+
+.user-info h3, .complaints h3 {
+  color: #555;
+}
+
+p {
+  margin: 10px 0;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.complaint-card {
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Add any additional styling as needed */

@@ -1,0 +1,23 @@
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Login
+    link(rel="stylesheet" href="css/login.css")
+    link(rel="stylesheet" href="css/alerts.css")
+
+  body
+    .container
+      .card
+        h2 Login
+        form(action="/signup", method="post")
+          .form-group
+            label(for="email") Email
+            input(type="email", id="email", name="email", required)
+          .form-group
+            label(for="password") Password
+            input(type="password", id="password", name="password", required)
+          button(type="submit") Login
+
+    // - script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js')
+    script(src='/js/bundle.js')
