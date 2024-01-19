@@ -1,0 +1,76 @@
+script(language='javascript', type='text/javascript').
+  function f2() {
+    window.close();
+  }
+
+  function f3() {
+    window.print(); 
+  }
+
+doctype html
+html(xmlns='http://www.w3.org/1999/xhtml')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=iso-8859-1')
+    title User Profile
+    link(href='style.css', rel='stylesheet', type='text/css')
+    link(href='anuj.css', rel='stylesheet', type='text/css')
+
+  body
+    div(style='margin-left:50px;')
+      form(name='updateticket', id='updateticket', method='post')
+        table(width='100%', border='0', cellspacing='0', cellpadding='0')
+          - const ret1 = [{ fullName: 'UserFullName', regDate: '2023-07-17', userEmail: 'user@example.com', contactNo: '1234567890', address: 'User Address', State: 'User State', country: 'User Country', pincode: '123456', updationDate: '2023-07-17', status: 1 }] // Replace this with your actual data
+
+          each row in ret1
+            tr
+              td(colspan='2')
+                b= `${row.fullName}'s profile`
+
+            tr
+              td(colspan='2', height='50')
+                b Reg Date:
+                | #{row.regDate}
+
+            tr
+              td(colspan='2', height='50')
+                b User Email:
+                | #{row.userEmail}
+
+            tr
+              td(colspan='2', height='50')
+                b User Contact no:
+                | #{row.contactNo}
+
+            tr
+              td(colspan='2', height='50')
+                b Address:
+                | #{row.address}
+
+            tr
+              td(colspan='2', height='50')
+                b State:
+                | #{row.State}
+
+            tr
+              td(colspan='2', height='50')
+                b Country:
+                | #{row.country}
+
+            tr
+              td(colspan='2', height='50')
+                b Pincode:
+                | #{row.pincode}
+
+            tr
+              td(colspan='2', height='50')
+                b Last Updation:
+                | #{row.updationDate}
+
+            tr
+              td(colspan='2', height='50')
+                b Status:
+                | #{row.status === 1 ? 'Active' : 'Block'}
+
+            tr
+              td(colspan='2')
+                input(name='Submit2', type='submit', class='txtbox4', value='Close this window ', onClick='return f2();', style='cursor: pointer;')

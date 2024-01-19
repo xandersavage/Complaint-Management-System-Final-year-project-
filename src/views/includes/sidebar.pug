@@ -1,0 +1,34 @@
+aside
+  #sidebar.nav-collapse
+    // sidebar menu start
+    ul.sidebar-menu#nav-accordion
+      p.centered
+        a(href="profile.html")
+          img.img-circle(width="60", src="/assets/img/ui-sam.jpg")
+      // Use your user variable here
+      h5.centered #{user.name}
+          
+      li.mt
+        a(href="/dashboard")
+          i.fa.fa-dashboard
+          span Dashboard
+
+      //- li.sub-menu
+      //-   a(href="javascript:;")
+      //-     i.fa.fa-cogs
+      //-     span Account Setting
+      //-   ul.sub
+      //-     li
+      //-       a(href="profile.php") Profile
+      //-     li
+      //-       a(href="change-password.php") Change Password
+
+      li.sub-menu
+        a(href="/new-complaint")
+          i.fa.fa-book
+          span Lodge Complaint
+
+      li.sub-menu
+        a(href="/mycomplaints")
+          i.fa.fa-tasks
+          span Complaint History

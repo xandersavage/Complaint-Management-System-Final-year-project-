@@ -1,0 +1,147 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="Dashboard")
+    meta(name="keyword", content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina")
+
+    title CMS | User Register Complaint
+    // Bootstrap core CSS
+    link(href="assets/css/bootstrap.css", rel="stylesheet")
+    // External CSS
+    link(href="/assets/font-awesome/css/font-awesome.css", rel="stylesheet")
+    link(rel="/stylesheet", type="text/css", href="assets/js/bootstrap-datepicker/css/datepicker.css")
+    link(rel="/stylesheet", type="text/css", href="assets/js/bootstrap-daterangepicker/daterangepicker.css")
+    // Internal CSS
+    link(href="/assets/css/style.css", rel="stylesheet")
+    link(href="/assets/css/style-responsive.css", rel="stylesheet")
+    link(href="/css/alerts.css", rel="stylesheet")
+
+    script.
+      function getCat(val) {
+        $.ajax({
+          type: "POST",
+          url: "getsubcat.php",
+          data: 'catid=' + val,
+          success: function(data) {
+            $("#subcategory").html(data);
+          }
+        });
+      }
+
+  body
+    section#container
+      include includes/header
+      include includes/sidebar
+
+      section#main-content
+        section.wrapper
+          h3
+            i.fa.fa-angle-right
+            |  Register Complaint
+
+          // BASIC FORM ELEMENTS
+          div.row.mt
+            div.col-lg-12
+              div.form-panel
+                if successmsg
+                  div.alert.alert-success.alert-dismissable
+                    button.close(type="button", data-dismiss="alert", aria-hidden="true")
+                      | ×
+                    b Well done!
+                    |  #{successmsg}
+
+                if errormsg
+                  div.alert.alert-danger.alert-dismissable
+                    button.close(type="button", data-dismiss="alert", aria-hidden="true")
+                      | ×
+                    b Oh snap!
+                    |  #{errormsg}
+
+                form#complaintform.form-horizontal.style-form(method="post", name="complaint", enctype="multipart/form-data")
+                  //- div.form-group
+                    //- label.col-sm-2.col-sm-2.control-label Category
+                    //- div.col-sm-4
+                    //-   select#category.form-control(onChange="getCat(this.value);", required="")
+                    //-     option(value="") Select Category
+                        //- Loop to generate options from PHP data
+                        //- Example:
+                        // - each rw in categories
+                        //   option(value= rw.id) #{rw.categoryName}
+                    //- label.col-sm-2.col-sm-2.control-label Sub Category
+                    //- div.col-sm-4
+                    //-   select#subcategory.form-control
+                    //-     option(value="") Select Subcategory
+
+                  div.form-group
+                    label.col-sm-2.col-sm-2.control-label Complaint Type
+                    div.col-sm-4
+                      select#complainttype.form-control(required="")
+                        option(value="Academic") Academic
+                        option(value="Non-Academic") Non-Academic
+
+                  div.form-group
+                    label.col-sm-2.col-sm-2.control-label Priority
+                    div.col-sm-4
+                      select#complaintpriority.form-control(required="")
+                        option(value="Low") Low
+                        option(value="Medium") Medium
+                        option(value="High") High
+
+                    //- label.col-sm-2.col-sm-2.control-label State
+                    //- div.col-sm-4
+                    //-   select#state.form-control(required="")
+                    //-     option(value="") Select State
+                        //- Loop to generate options from PHP data
+                        //- Example:
+                        // - each rw in states
+                        //   option(value= rw.stateName) #{rw.stateName}
+
+                  div.form-group
+                    label.col-sm-2.col-sm-2.control-label Title
+                    div.col-sm-4
+                      input#complainttitle.form-control(type="text", name="noc", required="", value="")
+
+                  div.form-group
+                    label.col-sm-2.col-sm-2.control-label Complaint Details (max 2000 words)
+                    div.col-sm-6
+                      textarea#complaindetails.form-control(name="complaindetails", required="", cols="10", rows="10", maxlength="2000")
+
+                  div.form-group
+                    label.col-sm-2.col-sm-2.control-label Complaint Related Doc(if any)
+                    div.col-sm-6
+                      input#complainfiles.form-control(type="file", name="compfile", value="")
+
+                  div.form-group
+                    div.col-sm-10(style="padding-left:25% ")
+                      button.btn.btn-primary(type="submit", name="submit") Submit
+
+    // JS placed at the end of the document so the pages load faster
+    script(src="/js/bundle.js")
+    script(src="/assets/js/jquery.js")
+    script(src="/assets/js/bootstrap.min.js")
+    script.include(type="text/javascript", src="assets/js/jquery.dcjqaccordion.2.7.js")
+    script(src="/assets/js/jquery.scrollTo.min.js")
+    script(src="/assets/js/jquery.nicescroll.js", type="text/javascript")
+
+    // Common script for all pages
+    script(src="/assets/js/common-scripts.js")
+
+    // Script for this page
+    script(src="/assets/js/jquery-ui-1.9.2.custom.min.js")
+
+    // Custom switch
+    script(src="/assets/js/bootstrap-switch.js")
+
+    // Custom tagsinput
+    script(src="/assets/js/jquery.tagsinput.js")
+
+    // Custom checkbox & radio
+    script(type="/text/javascript", src="assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js")
+    script(type="/text/javascript", src="assets/js/bootstrap-daterangepicker/date.js")
+    script(type="/text/javascript", src="assets/js/bootstrap-daterangepicker/daterangepicker.js")
+    script(type="/text/javascript", src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js")
+
+    script(src="/assets/js/form-component.js")

@@ -1,0 +1,75 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Admin| Manage Users
+    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='bootstrap/css/bootstrap-responsive.min.css', rel='stylesheet')
+    link(href='css/theme.css', rel='stylesheet')
+    link(href='images/icons/css/font-awesome.css', rel='stylesheet')
+    script.
+      var popUpWin=0;
+      function popUpWindow(URLStr, left, top, width, height) {
+        if (popUpWin) {
+          if (!popUpWin.closed) popUpWin.close();
+        }
+        popUpWin = open(URLStr, 'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+600+',height='+600+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+      }
+
+  body
+    include includes/admin-header.pug
+
+    .wrapper
+      .container
+        .row
+          include includes/admin-sidebar.pug
+          .span9
+            .content
+              .module
+                .module-head
+                  h3 Manage Users
+                .module-body.table
+                  if delmsg
+                    .alert.alert-error
+                      button.close(type='button', data-dismiss='alert') ×
+                      strong Oh snap!
+                      | #{delmsg}
+                  br
+
+                  table.datatable-1.table.table-bordered.table-striped.display(width='100%')
+                    thead
+                      tr
+                        th #
+                        th Name
+                        th Email
+                        th Contact no
+                        th Reg. Date
+                        th Action
+                    tbody
+                        tr
+                          td= 'row.cnt'
+                          td= 'row.fullName'
+                          td= 'row.userEmail'
+                          td= 'row.contactNo'
+                          td= 'row.regDate'
+                          td
+                            a(href="javascript:void(0);", onClick="popUpWindow('user-profile')", title="Update order")
+                              button(type="button" class="btn btn-primary") View User Detials
+
+      include includes/admin-footer.pug
+
+    script(src='scripts/jquery-1.9.1.min.js', type='text/javascript')
+    script(src='scripts/jquery-ui-1.10.1.custom.min.js', type='text/javascript')
+    script(src='bootstrap/js/bootstrap.min.js', type='text/javascript')
+    script(src='scripts/flot/jquery.flot.js', type='text/javascript')
+    script(src='scripts/datatables/jquery.dataTables.js')
+    script.
+      $(document).ready(function() {
+        $('.datatable-1').dataTable();
+        $('.dataTables_paginate').addClass('btn-group datatable-pagination');
+        $('.dataTables_paginate > a').wrapInner('<span />');
+        $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+        $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+      });

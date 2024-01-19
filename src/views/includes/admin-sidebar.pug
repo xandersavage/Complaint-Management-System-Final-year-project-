@@ -1,0 +1,52 @@
+.div.span3
+  .div.sidebar
+    ul.widget.widget-menu.unstyled
+      li
+        a.collapsed(data-toggle="collapse" href="#togglePages")
+          i.menu-icon.icon-cog
+          i.icon-chevron-down.pull-right
+          i.icon-chevron-up.pull-right
+          | Manage Complaint
+        ul#togglePages.collapse.unstyled
+          li
+            a(href="notprocess-complaint.php")
+              i.icon-tasks
+              | Unresolved Complaint
+              b.label.orange.pull-right
+                = 4
+          //- li
+          //-   a(href="inprocess-complaint.php")
+          //-     i.icon-tasks
+          //-     | Un Complaint
+          //-     - status="in Process"
+          //-       b.label.orange.pull-right
+          //-         = 1
+          li
+            a(href="closed-complaint.php")
+              i.icon-inbox
+              | Resolved Complaints
+              - status="closed"
+                b.label.green.pull-right
+                  = 10
+      li
+        a(href="manage-users.php")
+          i.menu-icon.icon-group
+          | Manage users
+    //- ul.widget.widget-menu.unstyled
+    //-   li
+    //-     a(href="category.php")
+    //-       i.menu-icon.icon-tasks
+    //-       | Add Category
+    //-   li
+    //-     a(href="subcategory.php")
+    //-       i.menu-icon.icon-tasks
+    //-       | Add Sub-Category
+    //-   li
+    //-     a(href="state.php")
+    //-       i.menu-icon.icon-paste
+    //-       | Add State
+    ul.widget.widget-menu.unstyled
+      li
+        a(href="logout.php")
+          i.menu-icon.icon-signout
+          | Logout
