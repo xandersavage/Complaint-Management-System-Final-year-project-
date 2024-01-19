@@ -1,0 +1,27 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.btn.btn-navbar(data-toggle='collapse', data-target='.navbar-inverse-collapse')
+        i.icon-reorder.shaded
+
+      a.brand(href='index.html')
+        | CMS | Admin
+
+      .nav-collapse.collapse.navbar-inverse-collapse
+        ul.nav.pull-right
+          li
+            a(href='#')
+              | Admin
+          li.nav-user.dropdown
+            a.dropdown-toggle(data-toggle='dropdown')
+              img.nav-avatar(src='img/user.png')
+              b.caret
+
+            ul.dropdown-menu
+              li
+                a(href='change-password.php')
+                  | Change Password
+              li.divider
+              li
+                a(href='logout.php')
+                  | Logout

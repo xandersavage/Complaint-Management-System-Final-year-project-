@@ -1,0 +1,65 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='Dashboard')
+    meta(name='keyword', content='Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
+    title CMS | Complaint History
+    //- Bootstrap core CSS
+    link(href='assets/css/bootstrap.css', rel='stylesheet')
+    //- External CSS
+    link(href='assets/font-awesome/css/font-awesome.css', rel='stylesheet')
+    //- Custom styles for this template
+    link(href='assets/css/style.css', rel='stylesheet')
+    link(href='assets/css/style-responsive.css', rel='stylesheet')
+    link(href='assets/css/table-responsive.css', rel='stylesheet')
+    //- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+  body
+    section#container
+      include includes/header.pug
+      include includes/sidebar.pug
+      section#main-content
+        section.wrapper
+          h3
+            i.fa.fa-angle-right
+            | Your Complaint History
+          div.row.mt
+            div.col-lg-12
+              div.content-panel
+                section#unseen
+                  table.table.table-bordered.table-striped.table-condensed
+                    thead
+                      tr
+                        th Complaint ID
+                        th Title
+                        th last Updation date
+                        th Status
+                        th Action
+                    tbody
+                        each complaint in user.complaints
+                          tr
+                            td.text-center= `${complaint._id}`
+                            td.text-center= `${complaint.title}`
+                            - const formattedDate = new Date(complaint.updatedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric'});
+                            td.text-center= `${formattedDate}`
+                            td.text-center
+                              button.btn.btn-success #{complaint.status}
+                            td.text-center
+                              a(href=`/complaint-details/${complaint._id}`)
+                                button.btn.btn-primary View Details
+      include includes/footer.pug
+    //- js placed at the end of the document so the pages load faster
+    script(src="/js/bundle.js")
+    script(src='assets/js/jquery.js')
+    script(src='assets/js/bootstrap.min.js')
+    script.include(type='text/javascript', src='assets/js/jquery.dcjqaccordion.2.7.js')
+    script(src='assets/js/jquery.scrollTo.min.js')
+    script(src='assets/js/jquery.nicescroll.js', type='text/javascript')
+    //- Common script for all pages
+    script(src='assets/js/common-scripts.js')
+    //- Script for this page

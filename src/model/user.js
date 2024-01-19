@@ -1,140 +1,158 @@
-const mongoose = require('mongoose')
-const validator = require('validator')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const Complaint = require('./complaint')
+const mongoose = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+// const express = require('express')
+const Complaint = require("./complaint");
 
 const userSchema = mongoose.Schema(
-    {
-        name: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        age: {
-            type: Number,
-            default: 18,
-            validate(val) {
-                if (val < 0) throw new Error('Age must be a positive number')
-            }
-        },
-        email: {
-            type: String,
-            unique: true,
-            required: true,
-            trim: true,
-            lowercase: true,
-            validate(val) {
-                if(!validator.isEmail(val)) throw new Error('Invalid Email')
-            }
-        },
-        password: {
-            type: String,
-            required: true,
-            minlength: 7,
-            trim: true,
-            validate(val) {
-                if (val.includes('password')) throw new Error('Your password can not contain password')
-            }
-        },
-        tokens: [
-            {
-                token: {
-                    type: String
-                    //required: true
-                }
-            }
-        ],
-        avatar: {
-            type: Buffer
-        },
-        role: {
-            type: String,
-            enum: ['student', 'admin', 'sug-rep'],
-            default: 'student',
-           // immutable: true // Make the role field immutable by default
-        }
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true
     },
-    {
-        timestamps: true
+    age: {
+      type: Number,
+      default: 18,
+      validate(val) {
+        if (val < 0) throw new Error("Age must be a positive number");
+      }
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+      lowercase: true,
+      validate(val) {
+        if (!validator.isEmail(val)) throw new Error("Invalid Email");
+      }
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 7,
+      trim: true,
+      validate(val) {
+        if (val.includes("password"))
+          throw new Error("Your password can not contain password");
+      }
+    },
+    tokens: [
+      {
+        token: {
+          type: String
+          //required: true
+        }
+      }
+    ],
+    avatar: {
+      type: Buffer
+    },
+    role: {
+      type: String,
+      enum: ["student", "admin", "sug-rep"],
+      default: "student",
+      immutable: true /* Make the role field immutable by default */
+    },
+    college: {
+      type: String,
+      enum: ["science", "technology"],
+      required: true,
+      immutable: true
+    },
+    department: {
+      type: String,
+      enum: [
+        "computer science",
+        "geophysics",
+        "geology",
+        "mathematics",
+        "emt",
+        "physics",
+        "chemistry",
+        "mechanical engineering",
+        "civil engineering",
+        "petroleum engineering",
+        "chemical engineering"
+      ],
+      required: true,
+      immutable: true
     }
-)
+  },
+  {
+    timestamps: true
+  }
+);
 
-userSchema.virtual('complaints', {
-    ref: 'Complaint',
-    localField: '_id',
-    foreignField: 'author'
-})
+userSchema.virtual("complaints", {
+  ref: "Complaint",
+  localField: "_id",
+  foreignField: "author"
+});
 
 // Custom function to find user by email and password
 // N.B :- we use ".statics for create model functions"
 userSchema.statics.findByCredentials = async (email, password) => {
-    const user = await User.findOne({email})
+  const user = await User.findOne({ email });
 
-    if(!user) {
-        throw new Error('Email does not exist!')
-    }
+  if (!user) {
+    throw new Error("Email does not exist!");
+  }
 
-    const isMatch = await bcrypt.compare(password, user.password)
+  const isMatch = await bcrypt.compare(password, user.password);
 
-    if (!isMatch) {
-        throw new Error('Wrong password!')
-    }
+  if (!isMatch) {
+    throw new Error("Wrong password!");
+  }
 
-    return user
-}
+  return user;
+};
 
 // Hash plain text password before saving
-userSchema.pre('save', async function(next) {
-    const user = this
+userSchema.pre("save", async function(next) {
+  const user = this;
 
-    if(user.isModified('password')) {
-        user.password = await bcrypt.hash(user.password, 8)
-    }
-})
+  if (user.isModified("password")) {
+    user.password = await bcrypt.hash(user.password, 8);
+  }
+});
 
 //Middleware to delete all user complaints when the user is deleted
 
-
-
 //Custom function to create a jwt token for a specific user
 // N.B:- we use ".methods" to create instance methods
-userSchema.methods.generateAuthToken = async function(res) {
-    const user = this
-    const token = jwt.sign({_id:user._id.toString()}, process.env.JWT_SECRET) //create token using user id and jwt secret
+userSchema.methods.generateAuthToken = async function() {
+  const user = this;
+  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET); //create token using user id and jwt secret
 
-    user.tokens = user.tokens.concat({token}) //add new token to tokens array on user schema
-    await user.save()
+  user.tokens = user.tokens.concat({ token }); //add new token to tokens array on user schema
+  await user.save();
+  return token;
 
-    const cookieOptions = {
-        expires: new Date(
-            Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 1000
-        ),
-        httpOnly: true //so that client wont be able to change our cookies
-    }
-    if (process.env.NODE_ENV === 'production') cookieOptions.secure = true
+  // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true
 
-    //send token as cookie
-    res.cookie('jwt', token, cookieOptions)
-    return token
-}
+  //send token as cookie
 
+  //console.log(token);
+};
 
 /*The purpose of this method (toJSON) is to customize the JSON representation of a user object before sending it as a response. 
 It removes sensitive information like the password, tokens, and avatar from the user object, 
 enhancing security and privacy when the user data is sent over the network.*/
 
 userSchema.methods.toJSON = function() {
-    const user = this
-    const userObject = user.toObject()
-  
-    delete userObject.password
-    delete userObject.tokens
-    delete userObject.avatar
-  
-    return userObject
-  };
+  const user = this;
+  const userObject = user.toObject();
 
-  const User = mongoose.model('User', userSchema)
+  delete userObject.password;
+  delete userObject.tokens;
+  delete userObject.avatar;
 
-  module.exports = User
+  return userObject;
+};
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

@@ -1,23 +1,77 @@
-html
+doctype html
+html(lang="en")
   head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Login
-    link(rel="stylesheet" href="css/login.css")
-    link(rel="stylesheet" href="css/alerts.css")
-
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="Dashboard")
+    meta(name="keyword", content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina")
+    title CMS | User Login
+    // Bootstrap core CSS
+    link(href="/assets/css/bootstrap.css", rel="stylesheet")
+    // External CSS
+    link(href="/assets/font-awesome/css/font-awesome.css", rel="stylesheet")
+    // Custom styles for this template
+    link(href="/assets/css/style.css", rel="stylesheet")
+    link(href="/assets/css/style-responsive.css", rel="stylesheet")
+    link(href="/css/alerts.css", rel="stylesheet")
+    //- script(type="text/javascript").
+    //-   function valid() {
+    //-     if (document.forgot.password.value != document.forgot.confirmpassword.value) {
+    //-       alert("Password and Confirm Password Field do not match!!");
+    //-       document.forgot.confirmpassword.focus();
+    //-       return false;
+    //-     }
+    //-     return true;
+    //-   }
   body
-    .container
-      .card
-        h2 Login
-        form(action="/signup", method="post")
-          .form-group
-            label(for="email") Email
-            input(type="email", id="email", name="email", required)
-          .form-group
-            label(for="password") Password
-            input(type="password", id="password", name="password", required)
-          button(type="submit") Login
-
-    // - script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js')
-    script(src='/js/bundle.js')
+    // MAIN CONTENT
+    #login-page
+      .container
+        form.form-login
+          h2.form-login-heading sign in now
+          p(style="padding-left:4%; padding-top:2%; color:red")
+            | 
+          p(style="padding-left:4%; padding-top:2%; color:green")
+            | 
+          .login-wrap
+            input(type="text", id='email' class="form-control", name="username", placeholder="Email", required, autofocus)
+            br
+            input(type="password", id='password' class="form-control", name="password", required, placeholder="Password")
+            label.checkbox
+              //- span.pull-right
+              //-   a(data-toggle="modal", href="login.html#myModal") Forgot Password?
+            button.btn.btn-theme.btn-block
+              i.fa.fa-lock
+              |  SIGN IN
+            hr
+            // Additional content...
+        // Modal
+        //- form.form-login(name="forgot", method="post")
+        //-   .modal.fade#myModal(role="dialog", aria-hidden="true", aria-labelledby="myModalLabel", tabindex="-1")
+        //-     .modal-dialog
+        //-       .modal-content
+        //-         .modal-header
+        //-           button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+        //-           h4.modal-title Forgot Password ?
+        //-         .modal-body
+        //-           p Enter your details below to reset your password.
+        //-           input(type="email", name="email", placeholder="Email", autocomplete="off", class="form-control", required)
+        //-           br
+        //-           input(type="text", name="contact", placeholder="contact No", autocomplete="off", class="form-control", required)
+        //-           br
+        //-           input(type="password", class="form-control", placeholder="New Password", id="password", name="password", required)
+        //-           br
+        //-           input(type="password", class="form-control unicase-form-control text-input", placeholder="Confirm Password", id="confirmpassword", name="confirmpassword", required)
+        //-         .modal-footer
+        //-           button.btn.btn-default(type="button", data-dismiss="modal") Cancel
+        //-           button.btn.btn-theme(type="submit", name="change", onclick="return valid()") Submit
+    // JS placed at the end of the document
+    script(src="/js/bundle.js")
+    script(src="/assets/js/jquery.js")
+    script(src="/assets/js/bootstrap.min.js")
+    // BACKSTRETCH
+    // You can use an image of whatever size. This script will stretch to fit in any screen size.
+    script(type="text/javascript", src="/assets/js/jquery.backstretch.min.js")
+    script.
+      $.backstretch("/assets/img/login-bg.jpg", {speed: 500})

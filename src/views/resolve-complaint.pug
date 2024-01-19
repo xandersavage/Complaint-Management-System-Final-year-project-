@@ -1,0 +1,51 @@
+//- Include this Pug file where the "include" statements refer to
+doctype html
+html(xmlns='http://www.w3.org/1999/xhtml')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=iso-8859-1')
+    title User Profile
+    link(type='text/css', href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(type='text/css', href='bootstrap/css/bootstrap-responsive.min.css', rel='stylesheet')
+    link(type='text/css', href='css/theme.css', rel='stylesheet')
+    link(type='text/css', href='images/icons/css/font-awesome.css', rel='stylesheet')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600', rel='stylesheet')
+    script.
+      function f2() {
+        window.close();
+      }
+      function f3() {
+        window.print();
+      }
+  body(style='margin-left:50px;')
+    form(name='updateticket', id='updatecomplaint', method='post')
+      table(width='100%', border='0', cellspacing='0', cellpadding='0')
+        tr
+          td(colspan='2') &nbsp;
+        tr(height='50')
+          td
+            b Complaint Number
+          td
+            | 2518
+        tr(height='50')
+          td
+            b Status
+          td
+            select(name='status', required='required')
+              option(value='') Select Status
+              option(value='in process') In Process
+              option(value='closed') Closed
+        tr(height='50')
+          td
+            b Remark
+          td
+            textarea(name='remark', cols='50', rows='10', required='required')
+        tr(height='50')
+          td &nbsp;
+          td
+            input(type='submit', name='update', value='Submit')
+        tr
+          td(colspan='2') &nbsp;
+        tr
+          td
+          td
+            input(name='Submit2', type='submit', class='txtbox4', value='Close this window', onClick='return f2();', style='cursor: pointer;')
