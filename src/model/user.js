@@ -59,8 +59,8 @@ const userSchema = mongoose.Schema(
     college: {
       type: String,
       enum: ["science", "technology"],
-      required: true,
-      immutable: true
+      required: true
+      // immutable: true
     },
     department: {
       type: String,
@@ -77,8 +77,8 @@ const userSchema = mongoose.Schema(
         "petroleum engineering",
         "chemical engineering"
       ],
-      required: true,
-      immutable: true
+      required: true
+      // immutable: true
     }
   },
   {

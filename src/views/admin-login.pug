@@ -4,18 +4,19 @@ html(lang="en")
     meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title CMS | Admin login
-    link(type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet")
-    link(type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet")
-    link(type="text/css" href="css/theme.css" rel="stylesheet")
-    link(type="text/css" href="img/icons/css/font-awesome.css" rel="stylesheet")
-    link(type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet')
+    link(type="text/css" href="/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+    link(type="text/css" href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet")
+    link(type="text/css" href="/css/theme.css" rel="stylesheet")
+    link(type="text/css" href="/img/icons/css/font-awesome.css" rel="stylesheet")
+    link(type='text/css' href='/http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet')
+    link(href="/css/alerts.css", rel="stylesheet")
   body
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
           a.btn.btn-navbar(data-toggle="collapse" data-target=".navbar-inverse-collapse")
             i.icon-reorder.shaded
-          a.brand(href="/") CMS | Admin
+          a.brand(href="") FUPRE-SUG CMS | Admin
           .nav-collapse.collapse.navbar-inverse-collapse
             ul.nav.pull-right
               li
@@ -24,17 +25,17 @@ html(lang="en")
       .container
         .row
           .module.module-login.span4.offset4
-            form.form-vertical(method="post")
+            form#adminlogin.form-vertical(method="post")
               .module-head
                 h3 Sign In
               span(style="color:red;")
               .module-body
                 .control-group
                   .controls.row-fluid
-                    input.span12(type="text" id="inputEmail" name="username" placeholder="Email")
+                    input#adminemail.span12(type="text" name="username" placeholder="Email")
                 .control-group
                   .controls.row-fluid
-                    input.span12(type="password" id="inputPassword" name="password" placeholder="Password")
+                    input#adminpassword.span12(type="password" name="password" placeholder="Password")
               .module-foot
                 .control-group
                   .controls.clearfix
@@ -42,6 +43,7 @@ html(lang="en")
     .footer
       .container
         b.copyright © 2020 CMS All rights reserved.
+  script(src="/js/bundle.js")
   script(src="scripts/jquery-1.9.1.min.js" type="text/javascript")
   script(src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript")
   script(src="bootstrap/js/bootstrap.min.js" type="text/javascript")

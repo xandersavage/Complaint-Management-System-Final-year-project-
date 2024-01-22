@@ -48,7 +48,10 @@ html(lang='en')
                             - const formattedDate = new Date(complaint.updatedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric'});
                             td.text-center= `${formattedDate}`
                             td.text-center
-                              button.btn.btn-success #{complaint.status}
+                              if complaint.status === 'Resolved'
+                                button.btn.btn-success #{complaint.status}
+                              else if complaint.status === 'Ongoing'
+                                button.btn.btn-danger #{complaint.status}
                             td.text-center
                               a(href=`/complaint-details/${complaint._id}`)
                                 button.btn.btn-primary View Details

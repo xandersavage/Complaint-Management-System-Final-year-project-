@@ -32,7 +32,7 @@ router.get("/complaints", auth, async (req, res) => {
     sort[parts[0]] = parts[1] === "desc" ? -1 : 1;
   }
   try {
-    console.log("hey");
+    // console.log("hey");
     await req.user.populate({
       path: "complaints",
       match,
@@ -130,6 +130,7 @@ router.patch("/admin/complaints/:id", auth, adminAuth, async (req, res) => {
     if (!complaint) return res.status(404).send();
 
     complaint.status = "Resolved";
+    complaint.remark = req.body.remark;
     await complaint.save();
     res.send(complaint);
   } catch (e) {

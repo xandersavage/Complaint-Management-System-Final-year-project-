@@ -36,31 +36,47 @@ html(lang="en")
               b Last Updated at :
               |  #{formattedDate}
 
-            form.form-horizontal.style-form(method="post", name="profile")
+            form#updateUserForm.form-horizontal.style-form(name="profile")
               // Form fields go here, use #{user.fieldName} to display user data
 
               .form-group
                 label.col-sm-2.col-sm-2.control-label Full Name
                 div.col-sm-4
-                  input(type="text", name="fullname", required="required", value=`${user.name}`, class="form-control")
+                  input#updateName(type="text", name="fullname", required="required", value=`${user.name}`, class="form-control")
                 label.col-sm-2.col-sm-2.control-label College
                 div.col-sm-4
-                  input(type="text", name="college", required="required", value=`${user.college}`, class="form-control")
+                  select#updateCollege.form-control(name="college", required="required")
+                    option(value="science" selected=`${user.college}`==="science") science
+                    option(value="technology" selected=`${user.college}`==="technology") technology
+                br
                 label.col-sm-2.col-sm-2.control-label Department
                 div.col-sm-4
-                  input(type="text", name="department", required="required", value=`${user.department}`, class="form-control")  
+                  select#updateDepartment.form-control(name="department", required="required")
+                    option(value="computer science" selected=`${user.department}`==="computer science") computer science
+                    option(value="geophysics" selected=`${user.department}`==="geophysics") geophysics
+                    option(value="geology" selected=`${user.department}`==="geology") geology
+                    option(value="mathematics" selected=`${user.department}`==="mathematics") mathematics
+                    option(value="emt" selected=`${user.department}`==="emt") emt
+                    option(value="physics" selected=`${user.department}`==="physics") physics
+                    option(value="chemistry" selected=`${user.department}`==="chemistry") chemistry
+                    option(value="mechanical engineering" selected=`${user.department}`==="mechanical engineering") mechanical engineering
+                    option(value="civil engineering" selected=`${user.department}`==="civil engineering") civil engineering
+                    option(value="petroleum engineering" selected=`${user.department}`==="petroleum engineering") petroleum engineering
+                    option(value="chemical engineering" selected=`${user.department}`==="chemical engineering") chemical engineering
+                br
                 label.col-sm-2.col-sm-2.control-label User Email
                 div.col-sm-4
-                  input(type="email", name="useremail", required="required", value=`${user.email}`, class="form-control", readonly)
+                  input#updateEmail(type="email", name="useremail", required="required", value=`${user.email}`, class="form-control")
+                br
                 label.col-sm-2.col-sm-2.control-label Age
                 div.col-sm-4
-                  input(type="number", name="Age", required="required", value=`${user.age}`, class="form-control")
+                  input#updateAge(type="number", name="Age", required="required", value=`${user.age}`, class="form-control")
 
               // Repeat similar blocks for other form fields
 
               .form-group
                 .col-sm-10(style="padding-left:25% ")
-                  button(type="submit", name="submit", class="btn btn-primary") Submit
+                  button(type="submit", name="submit", class="btn btn-primary") Update
 
           include includes/footer.pug
 

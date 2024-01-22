@@ -73,16 +73,24 @@ router.post("/users/login", async (req, res) => {
 //UPDATE MY PROFILE
 router.patch("/users/profile", auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["name", "email", "age", "password"];
+  const allowedUpdates = ["name", "email", "age", "college", "department"]; // you can include password
   const isValidOperation = updates.every(update =>
     allowedUpdates.includes(update)
   );
 
-  if (!isValidOperation)
+  // console.log(isValidOperation);
+  // console.log(updates);
+  // console.log(req.body);
+  // console.log(req.user);
+  if (!isValidOperation) {
     return res.status(400).send({ error: "invalid update" });
-
+  }
   try {
-    updates.forEach(update => (req.user[update] = req.body[update]));
+    updates.forEach(update => {
+      req.user[update] = req.body[update];
+      // console.log(req.user[update]);
+      // console.log(`${req.user[update]} = ${req.body[update]}`);
+    });
     await req.user.save();
     res.send(req.user);
   } catch (e) {

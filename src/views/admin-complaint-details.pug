@@ -4,11 +4,11 @@ html(lang="en")
     meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Admin| Complaint Details
-    link(type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet")
-    link(type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet")
-    link(type="text/css" href="css/theme.css" rel="stylesheet")
-    link(type="text/css" href="img/icons/css/font-awesome.css" rel="stylesheet")
-    link(type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet')
+    link(type="text/css" href="/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+    link(type="text/css" href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet")
+    link(type="text/css" href="/css/theme.css" rel="stylesheet")
+    link(type="text/css" href="/img/icons/css/font-awesome.css" rel="stylesheet")
+    link(type='text/css' href='/http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet')
     script(language="javascript" type="text/javascript").
       var popUpWin=0;
       function popUpWindow(URLStr, left, top, width, height) {
@@ -36,18 +36,33 @@ html(lang="en")
                           td
                             b Complainant Name
                           td
-                            = 'No Light'
+                            = `${user.name}`
+                        tr
+                          td
+                            b Complaint Title
+                          td
+                            = `${complaint.title}`
                         tr
                           td
                             b Category
                           td
-                            = 'Academic'
+                            = `${complaint.type}`
                         tr
                         tr
                           td
                             b Complaint Details
                           td(colspan="5")
-                            = 'jndsjnsjcndsjcdlnsjckdjksdks'
+                            = `${complaint.description}`
+                        tr
+                          td
+                            b Priority
+                          td(colspan="5")
+                            = `${complaint.priority}`
+                        tr
+                          td
+                            b Description
+                          td(colspan="5")
+                            = `${complaint.description}`
                         tr
                           td
                             b File(if any)
@@ -74,24 +89,25 @@ html(lang="en")
                           td
                             b Final Status
                           td(colspan="5")
-                            | Not Process Yet
+                            | Not Resolved Yet
                             
                         tr
                           td
                             b Action
                           td
-                            a(href="javascript:void(0);", onClick="popUpWindow('resolve-complaint')", title="Update order")
+                            a(href="javascript:void(0);", onClick=`popUpWindow('/resolve-complaint/${complaint.id}')`, title="Update order")
                                button(type="button" class="btn btn-primary") Take Action
                           td(colspan="4")
-                            a(href="javascript:void(0);", onClick="popUpWindow('user-profile')", title="Update order")
+                            a(href="javascript:void(0);", onClick=`popUpWindow('/user-profile/${user._id}')`, title="Update order")
                               button(type="button" class="btn btn-primary") View User Detials
                       
     include includes/admin-footer
-    script(src="scripts/jquery-1.9.1.min.js" type="text/javascript")
-    script(src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript")
-    script(src="bootstrap/js/bootstrap.min.js" type="text/javascript")
-    script(src="scripts/flot/jquery.flot.js" type="text/javascript")
-    script(src="scripts/datatables/jquery.dataTables.js")
+    script(src="/js/bundle.js" type="text/javascript")
+    script(src="/scripts/jquery-1.9.1.min.js" type="text/javascript")
+    script(src="/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript")
+    script(src="/bootstrap/js/bootstrap.min.js" type="text/javascript")
+    script(src="/scripts/flot/jquery.flot.js" type="text/javascript")
+    script(src="/scripts/datatables/jquery.dataTables.js")
     script.
         document.addEventListener('DOMContentLoaded', function() {
             $('.datatable-1').dataTable();
