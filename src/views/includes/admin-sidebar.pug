@@ -9,11 +9,11 @@
           | Manage Complaint
         ul#togglePages.collapse.unstyled
           li
-            a(href="notprocess-complaint.php")
+            a(href="/unresolved-complaints")
               i.icon-tasks
               | Unresolved Complaint
               b.label.orange.pull-right
-                = 4
+                = `${numOngoing}`
           //- li
           //-   a(href="inprocess-complaint.php")
           //-     i.icon-tasks
@@ -22,14 +22,14 @@
           //-       b.label.orange.pull-right
           //-         = 1
           li
-            a(href="closed-complaint.php")
+            a(href="/resolved-complaints")
               i.icon-inbox
               | Resolved Complaints
               - status="closed"
                 b.label.green.pull-right
-                  = 10
+                  = `${numResolved}`
       li
-        a(href="manage-users.php")
+        a(href="/manage-users")
           i.menu-icon.icon-group
           | Manage users
     //- ul.widget.widget-menu.unstyled
@@ -47,6 +47,6 @@
     //-       | Add State
     ul.widget.widget-menu.unstyled
       li
-        a(href="logout.php")
+        a#adminLogout(href="#")
           i.menu-icon.icon-signout
           | Logout

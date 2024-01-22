@@ -41,25 +41,27 @@ html(lang='en')
                   table.datatable-1.table.table-bordered.table-striped.display(width='100%')
                     thead
                       tr
-                        th #
+                        th User ID
                         th Name
                         th Email
-                        th Contact no
-                        th Reg. Date
+                        th College
+                        th Department
                         th Action
                     tbody
-                        tr
-                          td= 'row.cnt'
-                          td= 'row.fullName'
-                          td= 'row.userEmail'
-                          td= 'row.contactNo'
-                          td= 'row.regDate'
-                          td
-                            a(href="javascript:void(0);", onClick="popUpWindow('user-profile')", title="Update order")
-                              button(type="button" class="btn btn-primary") View User Detials
+                        each u in user
+                          tr
+                            td= `${u._id}`
+                            td= `${u.name}`
+                            td= `${u.email}`
+                            td= `${u.college}`
+                            td= `${u.department}`
+                            td
+                              a(href="javascript:void(0);", onClick=`popUpWindow('/user-profile/${u._id}')`, title="Update order")
+                                button(type="button" class="btn btn-primary") View User Detials
 
       include includes/admin-footer.pug
 
+    script(src="/js/bundle.js" type="text/javascript")
     script(src='scripts/jquery-1.9.1.min.js', type='text/javascript')
     script(src='scripts/jquery-ui-1.10.1.custom.min.js', type='text/javascript')
     script(src='bootstrap/js/bootstrap.min.js', type='text/javascript')

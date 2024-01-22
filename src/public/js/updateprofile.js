@@ -1,38 +1,30 @@
 import axios from "axios";
 import { showAlert } from "./alerts";
 
-export const createNewUser = async (
-  name,
-  age,
-  email,
-  password,
-  college,
-  department
-) => {
+export const updateProfile = async (name, email, age, college, department) => {
   // console.log(email, password)
   try {
     const res = await axios({
-      method: "POST",
-      url: "http://127.0.0.1:3000/users/register",
+      method: "PATCH",
+      url: "http://127.0.0.1:3000/users/profile",
       data: {
         name,
-        age,
         email,
-        password,
+        age,
         college,
         department
       }
     });
 
-    if (res.status === 201) {
-      showAlert("success", "User created successfully!");
+    if (res.status === 200) {
+      showAlert("success", "Updated Successfully!");
       window.setTimeout(() => {
         location.assign("/dashboard");
         // console.log("browser");
       }, 1500);
     }
-    console.log(res);
+    // console.log(res);
   } catch (e) {
-    showAlert("error", "Email in use");
+    showAlert("error", "Error Updating. Try again later");
   }
 };

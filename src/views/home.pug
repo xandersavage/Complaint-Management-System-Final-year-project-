@@ -6,9 +6,9 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='')
     meta(name='author', content='')
-    title Complaint Management System
-    link(href='css/bootstrap.min.css', rel='stylesheet')
-    link(href='css/half-slider.css', rel='stylesheet')
+    title FUPRE SUG CMS
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/css/half-slider.css', rel='stylesheet')
 
   body
     // Navigation
@@ -21,7 +21,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='#') COMPLAINT MANAGEMENT
+          a.navbar-brand(href='#') FUPRE SUG CMS
 
         // Collect the nav links, forms, and other content for toggling
         .collapse.navbar-collapse#bs-example-navbar-collapse-1
@@ -45,12 +45,17 @@ html(lang='en')
       div.carousel-inner
         div.item.active
           // Set the second background image using inline CSS below.
-          div.fill(style="background-image:url('img/c2.jpg')")
+          div.fill(style="background-image:url('/img/homecarousel3.jpg')")
           div.carousel-caption
 
         div.item
           // Set the third background image using inline CSS below.
-          div.fill(style="background-image:url('img/c10.jpg')")
+          div.fill(style="background-image:url('/img/c2.jpg')")
+          div.carousel-caption
+
+        div.item
+          // Set the third background image using inline CSS below.
+          div.fill(style="background-image:url('/img/homecarousel3.jpg')")
           div.carousel-caption
 
       // Controls
@@ -66,13 +71,20 @@ html(lang='en')
         .col-lg-12
           .com
             h1
-              b WELCOME TO COMPLAINT MANAGEMENT SYSTEM
+              b WELCOME TO FUPRE-SUG COMPLAINT MANAGEMENT SYSTEM
             p
-              h2 The Easiest Way To Complain Online
+              h2 Your Voice Matters, Your Complaints Count
               br
               b
-                i Tired off getting ripped off? Fight back and file a customer complaint now.
-                |  Sign Up Today And You Can Leave Complaints on various topics/company.
+                i Have a concern or complaint? Use our platform to share your thoughts and contribute to the improvement of our campus community
+            br
+            p
+              h2 Together We Build
+              br
+              b
+                i Join us in fostering a collaborative environment. Your participation helps us address challenges and create positive changes in our university community
+                br
+                |  Sign Up Today!.      
 
       hr
 
@@ -80,13 +92,13 @@ html(lang='en')
       footer
         .row
           .col-lg-12
-            p Copyright &copy; 2020 CMS
+            p Copyright &copy; 2024 FUPRE-SUG CMS
 
     // jQuery
-    script(src='js/jquery.js')
+    script(src='/js/jquery.js')
 
     // Bootstrap Core JavaScript
-    script(src='js/bootstrap.min.js')
+    script(src='/js/bootstrap.min.js')
 
     // Script to Activate the Carousel
     script.

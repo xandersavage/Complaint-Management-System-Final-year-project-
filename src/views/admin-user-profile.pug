@@ -12,64 +12,52 @@ html(xmlns='http://www.w3.org/1999/xhtml')
   head
     meta(http-equiv='Content-Type', content='text/html; charset=iso-8859-1')
     title User Profile
-    link(href='style.css', rel='stylesheet', type='text/css')
-    link(href='anuj.css', rel='stylesheet', type='text/css')
+    link(href='/style.css', rel='stylesheet', type='text/css')
+    link(href='/anuj.css', rel='stylesheet', type='text/css')
 
   body
     div(style='margin-left:50px;')
       form(name='updateticket', id='updateticket', method='post')
         table(width='100%', border='0', cellspacing='0', cellpadding='0')
-          - const ret1 = [{ fullName: 'UserFullName', regDate: '2023-07-17', userEmail: 'user@example.com', contactNo: '1234567890', address: 'User Address', State: 'User State', country: 'User Country', pincode: '123456', updationDate: '2023-07-17', status: 1 }] // Replace this with your actual data
 
-          each row in ret1
             tr
               td(colspan='2')
-                b= `${row.fullName}'s profile`
+                b= `${user.name}'s profile`
 
             tr
               td(colspan='2', height='50')
-                b Reg Date:
-                | #{row.regDate}
+                b Date Created:
+                | #{user.createdAt}
+
+            tr
+              td(colspan='2', height='50')
+                b Last Updated:
+                | #{user.updatedAt}
 
             tr
               td(colspan='2', height='50')
                 b User Email:
-                | #{row.userEmail}
+                | #{user.email}
 
             tr
               td(colspan='2', height='50')
-                b User Contact no:
-                | #{row.contactNo}
+                b Age
+                | #{user.age}
 
             tr
               td(colspan='2', height='50')
-                b Address:
-                | #{row.address}
+                b Department:
+                | #{user.department}
 
             tr
               td(colspan='2', height='50')
-                b State:
-                | #{row.State}
+                b College:
+                | #{user.college}
 
-            tr
-              td(colspan='2', height='50')
-                b Country:
-                | #{row.country}
-
-            tr
-              td(colspan='2', height='50')
-                b Pincode:
-                | #{row.pincode}
-
-            tr
-              td(colspan='2', height='50')
-                b Last Updation:
-                | #{row.updationDate}
-
-            tr
-              td(colspan='2', height='50')
-                b Status:
-                | #{row.status === 1 ? 'Active' : 'Block'}
+            //- tr
+            //-   td(colspan='2', height='50')
+            //-     b Status:
+            //-     | #{row.status === 1 ? 'Active' : 'Block'}
 
             tr
               td(colspan='2')
