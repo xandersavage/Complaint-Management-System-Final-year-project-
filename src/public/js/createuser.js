@@ -13,7 +13,7 @@ export const createNewUser = async (
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:3000/users/register",
+      url: "https://fupresugcms.onrender.com/users/register",
       data: {
         name,
         age,
