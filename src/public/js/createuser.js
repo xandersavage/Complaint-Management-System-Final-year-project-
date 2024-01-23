@@ -31,7 +31,7 @@ export const createNewUser = async (
         // console.log("browser");
       }, 1500);
     }
-    console.log(res);
+    console.log('Res', res);
   } catch (e) {
     showAlert("error", "Email in use");
   }
