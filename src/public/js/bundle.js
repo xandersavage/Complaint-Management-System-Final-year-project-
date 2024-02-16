@@ -5602,7 +5602,8 @@ var createNewUser = exports.createNewUser = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: "POST",
-            url: "http://127.0.0.1:3000/users/register",
+            url: "https://fupresugcms.onrender.com/users/register",
+            // http://127.0.0.1:3000/users/register
             data: {
               name: name,
               age: age,
@@ -5627,7 +5628,7 @@ var createNewUser = exports.createNewUser = /*#__PURE__*/function () {
         case 8:
           _context.prev = 8;
           _context.t0 = _context["catch"](0);
-          (0, _alerts.showAlert)("error", "Email in use");
+          (0, _alerts.showAlert)("error", _context.t0);
         case 11:
         case "end":
           return _context.stop();
@@ -5917,7 +5918,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63485" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57219" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
