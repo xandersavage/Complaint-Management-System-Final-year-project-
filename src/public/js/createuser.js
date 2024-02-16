@@ -13,7 +13,7 @@ export const createNewUser = async (
   try {
     const res = await axios({
       method: "POST",
-      url: "https://fupresugcms.onrender.com/users/register",
+      url: "https://fupresugcms.onrender.com/users/register", // http://127.0.0.1:3000/users/register
       data: {
         name,
         age,
@@ -23,7 +23,7 @@ export const createNewUser = async (
         department
       }
     });
-    console.log(res)
+    // console.log(res)
     if (res.status === 201) {
       showAlert("success", "User created successfully!");
       window.setTimeout(() => {
@@ -33,6 +33,6 @@ export const createNewUser = async (
     }
     console.log('Res', res);
   } catch (e) {
-    showAlert("error", "Email in use");
+    showAlert("error", e);
   }
 };
