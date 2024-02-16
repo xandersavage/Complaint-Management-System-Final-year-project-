@@ -13,7 +13,7 @@ export const createNewUser = async (
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:3000/users/register",
+      url: "https://fupresugcms.onrender.com/users/register", // http://127.0.0.1:3000/users/register
       data: {
         name,
         age,
@@ -33,6 +33,6 @@ export const createNewUser = async (
     }
     console.log(res);
   } catch (e) {
-    showAlert("error", "Email in use");
+    showAlert("error", e);
   }
 };
