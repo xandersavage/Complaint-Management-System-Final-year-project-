@@ -5457,7 +5457,7 @@ var login = exports.login = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: "POST",
-            url: "http://127.0.0.1:3000/users/login",
+            url: "https://fupresugcms.onrender.com/users/login",
             data: {
               email: email,
               password: password
@@ -5499,7 +5499,7 @@ var logout = exports.logout = /*#__PURE__*/function () {
           _context2.next = 3;
           return (0, _axios.default)({
             method: "GET",
-            url: "http://127.0.0.1:3000/users/Logout"
+            url: "https://fupresugcms.onrender.com/users/Logout"
           });
         case 3:
           res = _context2.sent;
@@ -5544,7 +5544,7 @@ var createNewComplaint = exports.createNewComplaint = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: "POST",
-            url: "http://127.0.0.1:3000/complaints/submit",
+            url: "https://fupresugcms.onrender.com/complaints/submit",
             data: {
               type: type,
               priority: priority,
@@ -5663,7 +5663,7 @@ var adminLogin = exports.adminLogin = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: "POST",
-            url: "http://127.0.0.1:3000/users/login",
+            url: "https://fupresugcms.onrender.com/users/login",
             data: {
               email: email,
               password: password
@@ -5731,7 +5731,7 @@ var resolveComplaint = exports.resolveComplaint = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: "PATCH",
-            url: "http://127.0.0.1:3000/admin/complaints/".concat(complaintId),
+            url: "https://fupresugcms.onrender.com/admin/complaints/".concat(complaintId),
             data: {
               remark: remark
             }
@@ -5786,7 +5786,7 @@ var updateProfile = exports.updateProfile = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: "PATCH",
-            url: "http://127.0.0.1:3000/users/profile",
+            url: "https://fupresugcms.onrender.com/users/profile",
             data: {
               name: name,
               email: email,
