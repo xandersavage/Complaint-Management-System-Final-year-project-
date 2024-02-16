@@ -23,7 +23,7 @@ export const createNewUser = async (
         department
       }
     });
-
+    // console.log(res)
     if (res.status === 201) {
       showAlert("success", "User created successfully!");
       window.setTimeout(() => {
@@ -31,7 +31,7 @@ export const createNewUser = async (
         // console.log("browser");
       }, 1500);
     }
-    console.log(res);
+    console.log('Res', res);
   } catch (e) {
     showAlert("error", e);
   }
