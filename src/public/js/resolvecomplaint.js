@@ -5,7 +5,7 @@ export const resolveComplaint = async (complaintId, remark) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: `http://127.0.0.1:3000/admin/complaints/${complaintId}`,
+      url: `https://fupresugcms.onrender.com/admin/complaints/${complaintId}`,
       data: {
         remark
       }

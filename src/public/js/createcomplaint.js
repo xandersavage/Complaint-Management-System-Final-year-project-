@@ -11,7 +11,7 @@ export const createNewComplaint = async (
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:3000/complaints/submit",
+      url: "https://fupresugcms.onrender.com/complaints/submit",
       data: {
         type,
         priority,

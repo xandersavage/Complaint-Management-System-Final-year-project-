@@ -6,7 +6,7 @@ export const updateProfile = async (name, email, age, college, department) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: "http://127.0.0.1:3000/users/profile",
+      url: "https://fupresugcms.onrender.com/users/profile",
       data: {
         name,
         email,
