@@ -77,5 +77,4 @@ complaint-management-webapp/
 ## 📧 Contact
 Alexander Olomukoro - [swankylex@gmail.com](mailto:swankylex@gmail.com)
 
-Live Demo: [https://fupresugcms.onrender.com/](https://www.your-live-app-link.com](https://fupresugcms.onrender.com/))
 
